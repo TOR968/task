@@ -10,7 +10,7 @@ public with sharing class OppTriggerHandler {
             WHERE Direct_sales_manager__c != NULL OR Service_manager__c != NULL
             WITH SECURITY_ENFORCED
         ];
-        Set<Id> Ids = (new Map<Id, Account>(accList)).keySet();
+        Set<Id> ids = (new Map<Id, Account>(accList)).keySet();
         System.debug('AccList ' + accList);
         List<RecordType> rtList = [
             SELECT Id, Name, SobjectType
@@ -22,7 +22,7 @@ public with sharing class OppTriggerHandler {
         switch on triggerEvent {
             when BEFORE_INSERT, BEFORE_UPDATE {
                 for (Opportunity opp : newRecords) {
-                    if (Ids.contains(opp.AccountId)) {
+                    if (ids.contains(opp.AccountId)) {
                         String recordTypeName;
 
                         for (RecordType recordType : rtList) {

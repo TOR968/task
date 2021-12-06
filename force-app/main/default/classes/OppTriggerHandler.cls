@@ -59,7 +59,9 @@ public with sharing class OppTriggerHandler {
                             }
                         }
                     } else {
-                        opp.addError('Account does not have manager selection fields filled in');
+                        opp.addError(
+                            'Manager selection fields are not filled in in the account. Fill in the fields in the account'
+                        );
                     }
                 }
             }

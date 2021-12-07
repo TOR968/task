@@ -35,17 +35,16 @@ public with sharing class OppTriggerHandler {
                             opp.addError('The Account field is required');
                         } else {
                             for (Account acc : accList) {
-                                if (acc.id == opp.AccountId)
-                                    if (recordTypeName == 'Direct selling Record Type') {
-                                        if (acc.id == opp.AccountId) {
-                                            if (acc.Direct_sales_manager__c != null) {
-                                                opp.Sales_manager__c = acc.Direct_sales_manager__c;
-                                                System.debug('in if ' + acc.Direct_sales_manager__c);
-                                            } else {
-                                                opp.addError('Select the sales manager of this account');
-                                            }
+                                if (recordTypeName == 'Direct selling Record Type') {
+                                    if (acc.id == opp.AccountId) {
+                                        if (acc.Direct_sales_manager__c != null) {
+                                            opp.Sales_manager__c = acc.Direct_sales_manager__c;
+                                            System.debug('in if ' + acc.Direct_sales_manager__c);
+                                        } else {
+                                            opp.addError('Select the sales manager of this account');
                                         }
                                     }
+                                }
 
                                 if (recordTypeName == 'Сonsultations Record Type') {
                                     if (acc.id == opp.AccountId) {
